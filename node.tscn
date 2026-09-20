@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cudprosj8sghm" path="res://player_ü.gd" id="1_j2q8x"]
 [ext_resource type="Texture2D" uid="uid://p1cal3oasd4i" path="res://default.png" id="2_112p8"]
 [ext_resource type="Texture2D" uid="uid://by1udss7ii5am" path="res://Sprite-0001.png" id="3_112p8"]
+[ext_resource type="PackedScene" uid="uid://dqnprfpwo3uud" path="res://file.tscn" id="4_e2u21"]
+[ext_resource type="Script" uid="uid://uxlm3p7ivr4k" path="res://dyingg.gd" id="5_bss38"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ovtm7"]
 size = Vector2(23, 27.5)
@@ -23,9 +25,15 @@ texture = ExtResource("3_112p8")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_e2u21")
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ovtm7"]
+distance = -733.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bss38"]
+size = Vector2(19, 11.5)
+
 [node name="Node" type="Node" unique_id=485547109]
 
-[node name="Player Ü" type="CharacterBody2D" parent="." unique_id=1162032431]
+[node name="Player Ü" type="CharacterBody2D" parent="." unique_id=1162032431 groups=["player"]]
 script = ExtResource("1_j2q8x")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player Ü" unique_id=82916660]
@@ -38,9 +46,62 @@ position = Vector2(3, 0.25)
 shape = SubResource("RectangleShape2D_ovtm7")
 
 [node name="Camera2D" type="Camera2D" parent="Player Ü" unique_id=2102397072]
-zoom = Vector2(4, 4)
+zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2141264433]
-tile_map_data = PackedByteArray("AAAAACcAAAAGAAAAAAACACcAAAAGAAAAAAAEACcAAAAGAAAAAAAGACcAAAAGAAAAAAAJACQAAAAGAAAAAAALACQAAAAGAAAAAAAPACQAAAAGAAAAAAATACQAAAAGAAAAAAAXACQAAAAGAAAAAAAbACcAAAAGAAAAAAAdACcAAAAGAAAAAAAfACUAAAAGAAAAAAAhACMAAAAGAAAAAAAjACEAAAAGAAAAAAAlAB8AAAAGAAAAAAApAB0AAAAGAAAAAAAsABsAAAAGAAAAAAAuABsAAAAGAAAAAAAxAB4AAAAGAAAAAAAzAB4AAAAGAAAAAAA1ACUAAAAGAAAAAAA3ACUAAAAGAAAAAAA7ACMAAAAGAAAAAAA/ACEAAAAGAAAAAABDACQAAAAGAAAAAABDACIAAAACAAAAAAAyABsAAAAEAAAAAAAlABwAAAAEAAAAAAAdACQAAAAEAAAAAAATACEAAAAEAAAAAAAKACEAAAAEAAAAAAAFACQAAAAEAAAAAAAXACAAAAAAAAAAAAAtABcAAAAAAAAAAAA7ACAAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAACcAAAAGAAAAAAACACcAAAAGAAAAAAAEACcAAAAGAAAAAAAGACcAAAAGAAAAAAAJACQAAAAGAAAAAAALACQAAAAGAAAAAAAPACQAAAAGAAAAAAATACQAAAAGAAAAAAAXACQAAAAGAAAAAAAbACcAAAAGAAAAAAAdACcAAAAGAAAAAAAfACUAAAAGAAAAAAAhACMAAAAGAAAAAAAjACEAAAAGAAAAAAAlAB8AAAAGAAAAAAApAB0AAAAGAAAAAAAsABsAAAAGAAAAAAAuABsAAAAGAAAAAAAxAB4AAAAGAAAAAAAzAB4AAAAGAAAAAAA1ACUAAAAGAAAAAAA3ACUAAAAGAAAAAAA7ACMAAAAGAAAAAAA/ACEAAAAGAAAAAABDACQAAAAGAAAAAABDACIAAAACAAAAAAA=")
 tile_set = SubResource("TileSet_ehibp")
+
+[node name="File" parent="." unique_id=702972962 instance=ExtResource("4_e2u21")]
+position = Vector2(80, 588)
+
+[node name="File2" parent="." unique_id=256258729 instance=ExtResource("4_e2u21")]
+position = Vector2(173, 541)
+
+[node name="File3" parent="." unique_id=1831065668 instance=ExtResource("4_e2u21")]
+position = Vector2(727, 368)
+
+[node name="File4" parent="." unique_id=1689855989 instance=ExtResource("4_e2u21")]
+position = Vector2(817, 440)
+
+[node name="File5" parent="." unique_id=1509475786 instance=ExtResource("4_e2u21")]
+position = Vector2(604, 464)
+
+[node name="File6" parent="." unique_id=837717239 instance=ExtResource("4_e2u21")]
+position = Vector2(320, 534)
+
+[node name="dyingg" type="Area2D" parent="." unique_id=1260318422]
+script = ExtResource("5_bss38")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dyingg" unique_id=1365930712]
+shape = SubResource("WorldBoundaryShape2D_ovtm7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=427341952]
+
+[node name="gameovercausedeath" type="Label" parent="CanvasLayer" unique_id=1576870173]
+visible = false
+offset_right = 144.0
+offset_bottom = 49.0
+text = "You got deleted lol
+Bad Ending 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1386686980]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+text = "You deleted everything in: Desktop
+Yay"
+
+[node name="youdidit" type="Area2D" parent="." unique_id=427430884 node_paths=PackedStringArray("win")]
+script = ExtResource("5_bss38")
+win = NodePath("../CanvasLayer/Label")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="youdidit" unique_id=1966248562]
+position = Vector2(1079, 560)
+shape = SubResource("RectangleShape2D_bss38")
+
+[connection signal="body_entered" from="dyingg" to="dyingg" method="_on_body_entered"]
+[connection signal="body_entered" from="youdidit" to="youdidit" method="_on_body_entered"]

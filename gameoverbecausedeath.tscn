@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dtyhipwveqmhs"]
+
+[node name="Node2D" type="Node2D" unique_id=412888710]
+
+[node name="Label" type="Label" parent="." unique_id=559453205]
+offset_left = 334.0
+offset_top = 191.0
+offset_right = 801.0
+offset_bottom = 472.0
+text = "You got deleted
+Like permanently
+Its game over
+Srry lol"
+horizontal_alignment = 1
+vertical_alignment = 1

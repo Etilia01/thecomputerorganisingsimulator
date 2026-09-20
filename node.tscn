@@ -1,0 +1,46 @@
+[gd_scene format=4 uid="uid://dn325ptklxcuq"]
+
+[ext_resource type="Script" uid="uid://cudprosj8sghm" path="res://player_ü.gd" id="1_j2q8x"]
+[ext_resource type="Texture2D" uid="uid://p1cal3oasd4i" path="res://default.png" id="2_112p8"]
+[ext_resource type="Texture2D" uid="uid://by1udss7ii5am" path="res://Sprite-0001.png" id="3_112p8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ovtm7"]
+size = Vector2(23, 27.5)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2u21"]
+texture = ExtResource("3_112p8")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+2:0/size_in_atlas = Vector2i(2, 2)
+2:0/0 = 0
+4:0/size_in_atlas = Vector2i(2, 2)
+4:0/0 = 0
+6:0/size_in_atlas = Vector2i(2, 2)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_ehibp"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_e2u21")
+
+[node name="Node" type="Node" unique_id=485547109]
+
+[node name="Player Ü" type="CharacterBody2D" parent="." unique_id=1162032431]
+script = ExtResource("1_j2q8x")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player Ü" unique_id=82916660]
+position = Vector2(3.0000005, 0)
+scale = Vector2(0.9746093, 1.0169837)
+texture = ExtResource("2_112p8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player Ü" unique_id=2087407871]
+position = Vector2(3, 0.25)
+shape = SubResource("RectangleShape2D_ovtm7")
+
+[node name="Camera2D" type="Camera2D" parent="Player Ü" unique_id=2102397072]
+zoom = Vector2(4, 4)
+position_smoothing_enabled = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2141264433]
+tile_map_data = PackedByteArray("AAAAACcAAAAGAAAAAAACACcAAAAGAAAAAAAEACcAAAAGAAAAAAAGACcAAAAGAAAAAAAJACQAAAAGAAAAAAALACQAAAAGAAAAAAAPACQAAAAGAAAAAAATACQAAAAGAAAAAAAXACQAAAAGAAAAAAAbACcAAAAGAAAAAAAdACcAAAAGAAAAAAAfACUAAAAGAAAAAAAhACMAAAAGAAAAAAAjACEAAAAGAAAAAAAlAB8AAAAGAAAAAAApAB0AAAAGAAAAAAAsABsAAAAGAAAAAAAuABsAAAAGAAAAAAAxAB4AAAAGAAAAAAAzAB4AAAAGAAAAAAA1ACUAAAAGAAAAAAA3ACUAAAAGAAAAAAA7ACMAAAAGAAAAAAA/ACEAAAAGAAAAAABDACQAAAAGAAAAAABDACIAAAACAAAAAAAyABsAAAAEAAAAAAAlABwAAAAEAAAAAAAdACQAAAAEAAAAAAATACEAAAAEAAAAAAAKACEAAAAEAAAAAAAFACQAAAAEAAAAAAAXACAAAAAAAAAAAAAtABcAAAAAAAAAAAA7ACAAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_ehibp")
